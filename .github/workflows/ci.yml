@@ -6,8 +6,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
+
+      # Limpar o cache do Cypress
+      - name: Clear Cypress cache
+        run: npx cypress cache clear
+
+      # Instalar as dependências do NPM, cacheá-las corretamente
+      # e executar todos os testes do Cypress
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:

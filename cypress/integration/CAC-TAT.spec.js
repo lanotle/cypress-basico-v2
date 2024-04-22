@@ -197,14 +197,11 @@ describe('Central de Atendimento ao Cliente TAT', function() {
 
     // Exercício Extra 15
 
-    it.only('acessa a página da política de privacidade removendo o target e então clicando no link', function() {
+    it('acessa a página da política de privacidade removendo o target e então clicando no link', function() {
         cy.get('a[href="privacy.html"')
           .invoke('removeAttr', 'target')
           .click()
         
         cy.contains('Talking About Testing').should('be.visible')
     })
-
-    
-
 })
