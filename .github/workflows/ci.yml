@@ -11,6 +11,10 @@ jobs:
       - name: Clear Cypress cache
         run: npx cypress cache clear
 
+      # Excluir o arquivo cypress.json, se existir
+      - name: Delete cypress.json
+        run: rm cypress.json || true
+
       # Instalar as dependências do NPM, cacheá-las corretamente
       # e executar todos os testes do Cypress
       - name: Cypress run
