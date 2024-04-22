@@ -1,23 +1,19 @@
 name: End-to-end tests 🧪
-on: [push]
+on: push
 jobs:
   cypress-run:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      # Limpar o cache do Cypress
       - name: Clear Cypress cache
         run: npx cypress cache clear
 
-      # Excluir o arquivo cypress.json, se existir
       - name: Delete cypress.json
         run: rm cypress.json || true
 
-      # Instalar as dependências do NPM, cacheá-las corretamente
-      # e executar todos os testes do Cypress
       - name: Cypress run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v6
         with:
           config-file: cypress.config.js
